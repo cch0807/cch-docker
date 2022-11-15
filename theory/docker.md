@@ -39,3 +39,14 @@ docker rm 'docker ps -a -q'
 # 레디스를 이용한 컨테이너 이해
 
 1. 레디스 서버를 작동.
+    - docker run redis
+
+2. 레디스 클라이언트 작동
+    - docker exec -it <컨테이너 아이디/이름> redis-cli
+    - it란 interactive terminal 의 약자이다.
+
+# 실행중인 컨테이너에서 터미널 사용하기
+
+- docker exec -it <컨테이너 아이디/이름> sh 또는 bash
+
+
