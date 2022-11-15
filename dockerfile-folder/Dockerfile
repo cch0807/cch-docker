@@ -1,8 +1,17 @@
 # 베이스 이미지 명시.
-FROM baseImage
+# 이미지 생성시 기반이 되는 이미지 레이어.
+# <이미지 이름>:<태그> 형식으로 작성
+# 태그를 안붙이면 자동적으로 가장 최신것을 다운받음.
+# ex) ubuntu:14.04
+#FROM baseImage
+FROM alpine
 
 # 추가적으로 필요한 파일을 다운 받기 위한 명령어 명시.
-RUN command
+# 도커이미지가 생성되기 전에 수행할 쉘 명령어
+# RUN command
 
 # 컨테이너 시작시 실행 될 명령어를 명시.
-CMD [ 'executable' ]
+# 컨테이너가 시작되었을 때 실행될 파일 또는 쉘 스크립트.
+# 해당 명령어는 DockerFile 내 1회만 사용 가능.
+CMD [ 'echo', 'hello']
+
