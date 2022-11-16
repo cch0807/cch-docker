@@ -13,5 +13,5 @@ FROM alpine
 # 컨테이너 시작시 실행 될 명령어를 명시.
 # 컨테이너가 시작되었을 때 실행될 파일 또는 쉘 스크립트.
 # 해당 명령어는 DockerFile 내 1회만 사용 가능.
-CMD [ 'echo', 'hello']
+CMD ["echo", "hello"]
 
