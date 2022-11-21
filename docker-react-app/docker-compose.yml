@@ -1,0 +1,20 @@
+version: "3"
+services:
+  react: # 컨테이너 이름
+    build: # 현 디렉토리에 있는 Dockerfile 사용
+      context: . # 도커 이미지를 구성하기 위한 파일과 폴더들이 있는 위치
+      dockerfile: Dockerfile.dev # 도커 파일 지정
+    ports:
+      - "5001:3000"
+    volumes: # 로컬 머신에 있는 파일들 맵핑
+      - ./:/usr/src/app 
+    stdin_open: true
+  
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+    - ./:/usr/src/app
+    # /usr/src/app/node_modules 
+    command: ["npm", "run", "test"]
