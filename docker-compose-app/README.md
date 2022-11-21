@@ -13,3 +13,9 @@
 - 보통 도커를 사용하지 않는 환경에서는 Redis 서버가 작동되고 있는 곳의 host 옵션을
 URL로 위에 처럼 주면 되지만, 도커 Compose를 사용할 때는 host 옵션을 docker-compose.yml 파일에 명시한 컨테이너 이름을 주면된다.
 
+# yml이 뭘까..
+- YAML ain't markup language 약자이며, 일반적으로 구성 파일 및 데이터가 저장되거나 전송되는 응용 프로그램에서 사용되고 원래는 XML이나 json 포맷으로 많이 쓰였지만, 좀 더 사람이 읽기 쉬운 포맷으로 나타난게 yaml이다.
+
+# docker-compose up vs docker-compose up --build
+- docker-compose up 이미지가 없을 때 이미지를 빌드하고 컨테이너 시작
+- docker-compose up --build 이미지가 있든 없든 이미지를 빌드하고 컨테이너 시작

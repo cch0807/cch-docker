@@ -82,3 +82,24 @@ docker rm 'docker ps -a -q'
 - docker build ./ 또는 docker build .
 - Build 명령어는
     - 해당 디렉토리 내에서 dockerfile이라는 파일을 찾아서 도커 클라이언트에 전달.
+
+# 로컬 머신 node_modules
+- node_modules에는 리엑트 앱을 실행할 때 필요한 모듈들이 들어있지만, 이미지를 빌드 할 때 이미 npm install로 모든 모듈들을 도커 이미지에 다운 받기 때문에 굳이 로컬 머신에 node_modules을 필요로 하지 않는다.
+그러기에 node_modules를 지워주는게 좋다!
+
+# 운영환경을 위한 nginx
+- 개발에서 사용하는 서버는 소스를 변경하면 자동으로 전체 앱을 다시 빌드해서 변경 소스를 반영해주는 것 같이 개발 환경에 특화된 기능들이 있기에 그러한 기능이 없는 Nginx 서버보다 더욱 적합하다.
+- 운영환경에서는 소스를 변경할 때 다시 반영해줄 필요가 없으며, 개발에 필요한 기능들이 필요하지 않기에 더 깔끔하고 빠른 Nginx를 웹 서버로 사용한다.
+
+# Travis CI ?
+- Travis CI는 Github에서 진행되는 오픈소스 프로젝트를 위한 지속적인 통합(Continuous Integration) 서비스이다. 2011년에 설립되어 2012년에 급성장하였으며 Ruby언어만 지원하였지만 현재 대부분의 개발 언어를 지원하고 있다.
+- Travis CI를 이용하면 Github repository에 있는 프로젝트를 특정 이벤트에 따라 자동으로 테스트, 빌드하거나 배포할 수 있다. Private repository는 유료로 일정 금액을 지불하고 사용할 수 있다.
+
+# Travis CI의 흐름
+- 로컬 Git -> Github -> Travis CI -> AWS
+
+1. 로컬 Git에 있는 소스를 Github 저장소에 Push한다.
+2. Github master 저장소에 소스가 Push가 되면 Travis CI에게 소스가 Push 되었다고 얘기해준다.
+3. Travis CI는 업데이트 된 소스를 Github에서 가지고 온다.
+4. github에서 가져온 소스의 테스트 코드를 실행한다.
+5. 테스트 코드 실행 후 테스트가 성공하면 AWS 같은 호스팅 사이트에 배포한다.
